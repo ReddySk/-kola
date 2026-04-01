@@ -5,9 +5,9 @@
   pip install requests  
 
 ### Spustiť program api-caller.py
-Pripojí sa postupne na dve API:
-API_RT = "https://api.tomorrow.io/v4/weather/realtime"
-API_TL= "https://api.tomorrow.io/v4/timelines"
+Pripojí sa postupne na dve API:  
+API_RT = "https://api.tomorrow.io/v4/weather/realtime"  
+API_TL= "https://api.tomorrow.io/v4/timelines"  
 
 Prvá vráti aktuálne parametre lokácie.
 Druhá po naparsovaní lat,long vypíše teploty za posledných 24 hodín.
