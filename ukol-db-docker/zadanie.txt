@@ -1,0 +1,20 @@
+Tohle je tvůj domácí úkol. 
+Tvé zadání zní: 👉 Vytvořte virtuální Docker síť pomocí docker network create.
+
+📍 Vytvořte virtuální Docker síť pomocí docker network create (https://docs.docker.com/reference/cli/docker/network/create/)
+
+Vytvořte dva Docker kontejnery, které spolupracují pomocí docker build a docker run:
+MariaDB kontejner – běžící databázový server.
+Python kontejner – načítá data z CSV souboru, transformuje je a ukládá do MariaDB.
+
+Vše nakonec zpusťte přes docker-compose.yml
+
+Kromě zdrojového kódu, Dockerfiles a docker-compose popište celý postup vašeho řešení v souboru README.md, který umístíte do složky s vaším cvičením.
+
+Bonus: vytvořte HTTP REST server jako třetí kontejner, který bude uložená data nabízet pomocí metody GET
+
+
+Jak úkol odevzdat: Přílohu přilož pod domácí úkol v příslušném formátu
+
+📅 Deadline úkolu máš do 10. 4. 2026 23:59.
+📍 Maximální počet bodů, které můžeš získat je 10 bodů.

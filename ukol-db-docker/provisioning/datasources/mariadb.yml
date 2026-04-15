@@ -1,0 +1,16 @@
+apiVersion: 1
+
+datasources:
+  - name: MariaDB
+    type: mysql
+    access: proxy
+    url: maryska:3306
+    database: beton
+    user: myuser
+    secureJsonData:
+      password: my-secret-pw
+    jsonData:
+      maxOpenConns: 100
+      maxIdleConns: 10
+      connMaxLifetime: 14400
+    editable: true

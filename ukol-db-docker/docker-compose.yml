@@ -1,0 +1,60 @@
+name: ukol-db-docker
+services:
+  maryska:
+    image: mariadb:latest
+    container_name: maryska
+    environment:
+      MARIADB_USER: myuser
+      MARIADB_PASSWORD: my-secret-pw
+      MARIADB_DATABASE: beton
+      MARIADB_RANDOM_ROOT_PASSWORD: 1
+    ports:
+      - "3306:3306"
+    networks:
+      - betonarka-network
+    volumes:
+      - maryska-dbdata:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: adminpw
+    networks:
+      - betonarka-network
+    depends_on:
+      - maryska
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./dashboards:/var/lib/grafana/dashboards
+      
+
+  concrete-loader:
+    container_name: concrete-loader
+    build: ./db-loader
+    depends_on:
+      - maryska
+    networks:
+      - betonarka-network
+    environment:
+      DB_HOST: maryska
+      DB_USER: myuser
+      DB_PASSWORD: my-secret-pw
+      DB_NAME: beton
+    #command: python loader.py
+
+volumes:
+  maryska-dbdata:
+    driver: local
+  grafana-data:
+    driver: local
+
+networks:
+  betonarka-network:
+    driver: bridge
