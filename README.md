@@ -1,8 +1,30 @@
-Úkol 2: Načítanie z API, vizualizácia cez Plotly a výstup do CSV
+## Úkol 2: Načítanie z API, vizualizácia cez Plotly a výstup do CSV
+### Requirements:
+  pip install pandas  
+  pip install plotly[express]  
+  pip install requests  
+
+### Spustiť program api-caller.py
+Pripojí sa postupne na dve API:  
+API_RT = "https://api.tomorrow.io/v4/weather/realtime"  
+API_TL= "https://api.tomorrow.io/v4/timelines"  
+
+Prvá vráti aktuálne parametre lokácie.
+Druhá po naparsovaní lat,long vypíše teploty za posledných 24 hodín.
+
+Dáta zobrazí v prehliadači ako vývojovú krivku teploty a na mieste kde sa spustí skript, vytvorí súbor "teploty" s dátumom v názve. 
+
+Samozrejme, skript sa dá ďalej vytuniť o nastavenie lokácie podľa aktuálnej IP adresy, prípadne nastavenie proxy, ak je užívateľ na firemnej sieti za FW (priamo v knižnici "requests" použitím parametru "proxies"). 
+Taktiež by sa dalo volať skript s parametrami, napr. na definovanie startTime, units, timestamps, ...
+Skript dovoľuje výpis len za posledných 24 hodín, čo je dané limitom free účtu na tomorrow.io. 
+
+API key pre tento účel je priamo v skripte, ale tiež sa dá volať ako parameter, prípadne do enviroment. 
+
 
 ![Graf](image.png)
 
 CSV:
+```
 timestamp,temperature
 2026-03-31T17:00:00Z,7.14
 2026-03-31T18:00:00Z,6.39
@@ -29,10 +51,11 @@ timestamp,temperature
 2026-04-01T15:00:00Z,9.81
 2026-04-01T16:00:00Z,10.04
 2026-04-01T17:00:00Z,9.88
+```
 
 
-
-ukol1-vizualizace.py načíta vystup.txt a zobrazí graf s teplotami od 1.1. - 31.3. vo výška 300, 500, 800 a 1100 m.n.m. použitím Plotty Line grafu
+## ukol1-vizualizace.py 
+načíta vystup.txt a zobrazí graf s teplotami od 1.1. - 31.3. vo výška 300, 500, 800 a 1100 m.n.m. použitím Plotty Line grafu
 <img width="1614" height="1205" alt="image" src="https://github.com/user-attachments/assets/b3cd8571-ac2f-4c6c-a87b-f753ae1ebd74" />
 Tak som ešte pridal i ten seaburn. 
 Je tam scatter diagram a k tomu heatmap po mesiacoch.
