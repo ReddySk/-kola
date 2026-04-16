@@ -5,15 +5,9 @@ Toto riešenie vytvorí skupinu služieb, závislých na bežiacej MariaDb:
 - [x] **Python** instance "concrete-loader"
 - [ ] **Grafana** instance "grafana"
 
-Po zkompilovaní image 
-```
-docker compose build
-```
- v podzložke **ukol-db-docker**, naštartujeme službu 
-```
-docker compose up -d 
-```
-Vytvorí sa a soustí skupina containerov: **ukol-db-docker**
+Po zkompilovaní image `docker compose build` v podzložke **ukol-db-docker**, naštartujeme službu `docker compose up -d`
+Vytvorí sa skupina containerov: **ukol-db-docker**
+
 Táto skupina obsahuje vyššie zmienené kontajnery:
 - **MariaDB** instance "maryska" počúvajúca na štandartnom porte 3306
 - **Grafana** instance "grafana" počúvajúca na štandartnom porte 3000
